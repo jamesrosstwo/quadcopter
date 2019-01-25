@@ -1,0 +1,774 @@
+{
+  "name": "Chatbot",
+  "intents": [
+    {
+      "intent": "Bot_Control_Confirm_Presence",
+      "examples": [
+        {
+          "text": "Are you still here with me?"
+        },
+        {
+          "text": "Are you still around?"
+        },
+        {
+          "text": "Are you on?"
+        },
+        {
+          "text": "Are you leaving me?"
+        },
+        {
+          "text": "Anyone there?"
+        },
+        {
+          "text": "Am I talking to someone?"
+        },
+        {
+          "text": "You around?"
+        },
+        {
+          "text": "Where'd you go?"
+        },
+        {
+          "text": "Speak to me if you are there."
+        },
+        {
+          "text": "Is anybody home?"
+        },
+        {
+          "text": "Is anybody here?"
+        },
+        {
+          "text": "I am still holding"
+        },
+        {
+          "text": "Have I lost you?"
+        },
+        {
+          "text": "Did you hear what I said?"
+        },
+        {
+          "text": "Did you go somewhere?"
+        },
+        {
+          "text": "Are you there?"
+        }
+      ],
+      "description": "Ask the bot to indicate that it is available."
+    },
+    {
+      "intent": "Bot_Control_Standby",
+      "examples": [
+        {
+          "text": "brb"
+        },
+        {
+          "text": "talk soon"
+        },
+        {
+          "text": "One second"
+        },
+        {
+          "text": "Wait a second"
+        },
+        {
+          "text": "Wait"
+        },
+        {
+          "text": "Out for a break"
+        },
+        {
+          "text": "Need a minute here"
+        },
+        {
+          "text": "Let me see"
+        },
+        {
+          "text": "Keep holding"
+        },
+        {
+          "text": "Just hold on"
+        },
+        {
+          "text": "Just a sec"
+        },
+        {
+          "text": "In a moment"
+        },
+        {
+          "text": "I would like to put you on hold"
+        },
+        {
+          "text": "I will be back"
+        },
+        {
+          "text": "I want stop a moment"
+        },
+        {
+          "text": "Hold on"
+        },
+        {
+          "text": "Give me a second"
+        },
+        {
+          "text": "Give me a moment"
+        },
+        {
+          "text": "Give me a few minutes to get together"
+        },
+        {
+          "text": "Can you wait for me?"
+        },
+        {
+          "text": "Can you give me a moment?"
+        },
+        {
+          "text": "Be patient with me"
+        },
+        {
+          "text": "Be back later"
+        },
+        {
+          "text": "Back again soon"
+        },
+        {
+          "text": "Hold up"
+        }
+      ],
+      "description": "Indicate a delay in providing input to the bot."
+    },
+    {
+      "intent": "Bot_Control_Ignore_Undo",
+      "examples": [
+        {
+          "text": "I change my mind."
+        },
+        {
+          "text": "I didn't mean to do that actually, let's go back"
+        },
+        {
+          "text": "Ignore this"
+        },
+        {
+          "text": "It's not what I mean"
+        },
+        {
+          "text": "Let us redo that again!"
+        },
+        {
+          "text": "Never mind"
+        },
+        {
+          "text": "Never"
+        },
+        {
+          "text": "Not yet"
+        },
+        {
+          "text": "Nothing"
+        },
+        {
+          "text": "Wait! Let's back up few steps and do that again"
+        },
+        {
+          "text": "Actually, I take that back"
+        },
+        {
+          "text": "Cancel"
+        },
+        {
+          "text": "Hold on! I think I want to do it differently."
+        },
+        {
+          "text": "I did not mean that?"
+        }
+      ],
+      "description": "Ask the bot to take one step back."
+    },
+    {
+      "intent": "Hello",
+      "examples": [
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "Greetings"
+        },
+        {
+          "text": "Hello there"
+        }
+      ],
+      "description": "Greetings"
+    },
+    {
+      "intent": "Bot_Control_Change_Subject",
+      "examples": [
+        {
+          "text": "Change topic"
+        },
+        {
+          "text": "I have one more question"
+        },
+        {
+          "text": "Here is another issue"
+        },
+        {
+          "text": "Help me with this other question"
+        },
+        {
+          "text": "Discuss something else"
+        },
+        {
+          "text": "Chat about something else"
+        },
+        {
+          "text": "Let us change the topic"
+        },
+        {
+          "text": "Can we talk about something else?"
+        },
+        {
+          "text": "Another thing"
+        },
+        {
+          "text": "A different matter"
+        },
+        {
+          "text": "Talk about something else"
+        },
+        {
+          "text": "Let us talk about something else"
+        }
+      ],
+      "description": "Change to a different topic."
+    },
+    {
+      "intent": "Bot_Control_Clarification",
+      "examples": [
+        {
+          "text": "Come again?"
+        },
+        {
+          "text": "Explains"
+        },
+        {
+          "text": "I did not quite understand what you gave me"
+        },
+        {
+          "text": "I didn't catch that"
+        },
+        {
+          "text": "I didn't quite understand what you said"
+        },
+        {
+          "text": "I didn't understand that properly"
+        },
+        {
+          "text": "I don't get it"
+        },
+        {
+          "text": "I don't understand what you're saying"
+        },
+        {
+          "text": "I don't understand"
+        },
+        {
+          "text": "I need more information"
+        },
+        {
+          "text": "Let's try to say that again more clearly, shall we?"
+        },
+        {
+          "text": "What are you referring to?"
+        },
+        {
+          "text": "What are you saying?"
+        },
+        {
+          "text": "What are you talking about?"
+        },
+        {
+          "text": "What do you mean by that?"
+        },
+        {
+          "text": "What do you mean?"
+        },
+        {
+          "text": "Can you say that again please?"
+        }
+      ],
+      "description": "Repeat or clarify last statement."
+    },
+    {
+      "intent": "Bot_Control_Approve_Response",
+      "examples": [
+        {
+          "text": "Yeah, that's it!"
+        },
+        {
+          "text": "Yes"
+        },
+        {
+          "text": "Thanks"
+        },
+        {
+          "text": "You read my mind"
+        },
+        {
+          "text": "Affirmative. That's what I'm looking for."
+        },
+        {
+          "text": "All right"
+        },
+        {
+          "text": "Correct"
+        },
+        {
+          "text": "For sure!"
+        },
+        {
+          "text": "Got it"
+        },
+        {
+          "text": "Great"
+        },
+        {
+          "text": "I agree"
+        },
+        {
+          "text": "I like that"
+        },
+        {
+          "text": "Indeed!"
+        },
+        {
+          "text": "Sure thing!"
+        },
+        {
+          "text": "Sweet"
+        },
+        {
+          "text": "That is precisely what I was looking for"
+        },
+        {
+          "text": "That is right"
+        },
+        {
+          "text": "That is the proper response."
+        },
+        {
+          "text": "That is what I need"
+        },
+        {
+          "text": "That's exactly what I want"
+        },
+        {
+          "text": "This is alright"
+        },
+        {
+          "text": "Very well. Let's do it."
+        }
+      ],
+      "description": "Acknowledge that the response satisfies a question."
+    },
+    {
+      "intent": "Help",
+      "examples": [
+        {
+          "text": "Help me"
+        },
+        {
+          "text": "Help"
+        },
+        {
+          "text": "List commands"
+        },
+        {
+          "text": "I need help"
+        }
+      ],
+      "description": "Help commands"
+    },
+    {
+      "intent": "Bot_Control_Unsure",
+      "examples": [
+        {
+          "text": "I have no idea what you are looking for"
+        },
+        {
+          "text": "I haven't got a clue"
+        },
+        {
+          "text": "I m not certain I get what you re saying"
+        },
+        {
+          "text": "I m not sure what will make you happy"
+        },
+        {
+          "text": "I don t know what you need"
+        },
+        {
+          "text": "I m not yet convinced"
+        },
+        {
+          "text": "No clue"
+        },
+        {
+          "text": "No idea"
+        },
+        {
+          "text": "You got me"
+        },
+        {
+          "text": "I don t know what you want"
+        },
+        {
+          "text": "I have no idea, actually"
+        },
+        {
+          "text": "To be honest, I m really not sure"
+        }
+      ],
+      "description": "Indicate no definite answer to a question."
+    },
+    {
+      "intent": "Move",
+      "examples": [
+        {
+          "text": "Move right"
+        },
+        {
+          "text": "Move"
+        }
+      ],
+      "description": "Move"
+    },
+    {
+      "intent": "Bot_Control_Reject_Response",
+      "examples": [
+        {
+          "text": "I disagree"
+        },
+        {
+          "text": "Bad response"
+        },
+        {
+          "text": "You're misunderstanding me"
+        },
+        {
+          "text": "I do not think it is the answer?"
+        },
+        {
+          "text": "You didn't understand me"
+        },
+        {
+          "text": "You did not understand what I said"
+        },
+        {
+          "text": "You did not understand what I asked"
+        },
+        {
+          "text": "Wrong response"
+        },
+        {
+          "text": "That was wrong, try again"
+        },
+        {
+          "text": "That was not my intent"
+        },
+        {
+          "text": "That sounds like the wrong response"
+        },
+        {
+          "text": "That is not true"
+        },
+        {
+          "text": "That answer is incorrect"
+        },
+        {
+          "text": "Not the right response"
+        },
+        {
+          "text": "No"
+        },
+        {
+          "text": "No I'm fine thanks"
+        },
+        {
+          "text": "It is not what I was looking for"
+        },
+        {
+          "text": "It is not what I want"
+        },
+        {
+          "text": "I wasn't looking for that"
+        },
+        {
+          "text": "I don't want that"
+        },
+        {
+          "text": "I don't need that"
+        }
+      ],
+      "description": "Indicate the bot's response does not address a question."
+    },
+    {
+      "intent": "Bot_Control_Start_Over",
+      "examples": [
+        {
+          "text": "Actually, let's start over"
+        },
+        {
+          "text": "Back to the beginning"
+        },
+        {
+          "text": "Back to the top"
+        },
+        {
+          "text": "Begin over!"
+        },
+        {
+          "text": "Can we please start over?"
+        },
+        {
+          "text": "How can I start over?"
+        },
+        {
+          "text": "I need to reset."
+        },
+        {
+          "text": "I want start from the beginning"
+        },
+        {
+          "text": "I would like to start all over"
+        },
+        {
+          "text": "Let us reopen this again."
+        },
+        {
+          "text": "Let's go back to square one"
+        },
+        {
+          "text": "Let's pick this up from the top again."
+        },
+        {
+          "text": "One more time from the beginning"
+        },
+        {
+          "text": "Please initiate from the beginning"
+        },
+        {
+          "text": "Please reset"
+        },
+        {
+          "text": "Please start a new chat"
+        },
+        {
+          "text": "Restart"
+        },
+        {
+          "text": "Start over"
+        },
+        {
+          "text": "We need a do-over"
+        },
+        {
+          "text": "We will need to begin again"
+        }
+      ],
+      "description": "Restart bot or current flow."
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "sys-person",
+      "values": []
+    },
+    {
+      "entity": "direction",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "back",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "forward",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "backwards",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "forwards",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "right",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "left",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "down",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "up",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-location",
+      "values": []
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "A sample simple Customer Service skill",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "text": {
+          "values": [
+            "Okay! Moving."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_5_1548452266518",
+      "metadata": {},
+      "conditions": "@direction",
+      "dialog_node": "node_2_1548453145779"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "text": {
+          "values": [
+            "Hi!",
+            "Hello!",
+            "Hello there!",
+            "Hi there!",
+            "Hey!"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1548453379701",
+      "previous_sibling": "node_5_1548452266518"
+    },
+    {
+      "type": "standard",
+      "title": "Move Drone",
+      "output": {
+        "text": {
+          "values": [
+            "Okay! Moving.",
+            "Moving."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "#Move && @direction",
+      "dialog_node": "node_4_1548452260728",
+      "previous_sibling": "Opening"
+    },
+    {
+      "type": "standard",
+      "title": "No understanding",
+      "output": {
+        "text": {
+          "values": [
+            "Sorry, I didn't quite get that.",
+            "I didn't understand that.",
+            "I didn't quite get that."
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "node_7_1548453682068",
+      "previous_sibling": "node_4_1548453379701"
+    },
+    {
+      "type": "standard",
+      "title": "Move without direction",
+      "output": {
+        "text": {
+          "values": [
+            "Okay. Which direction?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "#Move",
+      "dialog_node": "node_5_1548452266518",
+      "previous_sibling": "node_4_1548452260728"
+    },
+    {
+      "type": "standard",
+      "title": "Opening",
+      "output": {
+        "text": {
+          "values": [
+            "Hello!",
+            "Hey there!",
+            "Hi!"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "metadata": {},
+      "conditions": "#Hello",
+      "digress_in": "does_not_return",
+      "dialog_node": "Opening"
+    }
+  ],
+  "workspace_id": "36e23004-d746-4b62-8c8f-36159e87d185",
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "status": "Available"
+}
