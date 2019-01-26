@@ -1,6 +1,14 @@
+import json
+from tts import Speech
 from watson import Watson
 
-assistant_id = "65ab6c6b-0296-4761-bca2-168415b00e7e"
-assistant = Watson(assistant_id)
+with open('config.json') as f:
+    config = json.load(f)
+
+assistant = Watson()
+tts = Speech()
+
 for i in range(20):
-    print(assistant.message(input()))
+    message = assistant.message(input())
+    print(message)
+    tts.say(message)
