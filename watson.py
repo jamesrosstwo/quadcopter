@@ -6,6 +6,7 @@ from watson_developer_cloud import AssistantV2
 def connect():
     api_key = os.environ.get("ASSISTANT_APIKEY")
     api_url = os.environ.get("ASSISTANT_URL")
+    print(api_url, api_key)
     if not api_key:
         raise NameError("Missing API key")
 
