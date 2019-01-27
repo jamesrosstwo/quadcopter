@@ -8,3 +8,7 @@ class Speech:
     def say(self, message):
         self.engine.say(message)
         self.engine.runAndWait()
+
+
+if __name__ == "__main__":
+    print("")

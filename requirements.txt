@@ -1,3 +1,5 @@
 watson-developer-cloud==2.5.4
 pyttsx3==2.7
 pypiwin32==223
+PyAudio==0.2.11
+SpeechRecognition==3.8.1
