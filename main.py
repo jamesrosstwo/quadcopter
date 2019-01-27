@@ -27,23 +27,24 @@ def init_services():
         web_server = Server(data)
 
 
-def update_data(update, delay_ms):
-    td = (update - datetime.datetime.now()).total_seconds() * 1000
+def update_data():
+    delay_ms = 500
+    global next_update
+    td = (next_update - datetime.datetime.now()).total_seconds() * 1000
     if td < 0:
-        return datetime.datetime.now() + datetime.timedelta(milliseconds=delay_ms)
-    return update
+        print(1)
+        next_update = datetime.datetime.now() + datetime.timedelta(milliseconds=delay_ms)
 
 
 
 if __name__ == "__main__":
-    data_cooldown = 500
     next_update = datetime.datetime.min
     config = load_config()
     init_services()
 
     print("Watson:", assistant.message(""))
     while True:
-        next_update = update_data(next_update, data_cooldown)
+        update_data()
 
     # if buttonPressed:
     # message = assistant.message(recognizer.listen())
