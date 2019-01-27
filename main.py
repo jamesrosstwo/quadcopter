@@ -7,15 +7,15 @@ if __name__ == "__main__":
     with open('config.json') as f:
         config = json.load(f)
 
-    print("Initializing Watson...")
+    print("Initializing conversation...")
     assistant = Watson()
     print("Initializing voice...")
     tts = Speech()
     print("Initializing speech recognition")
     recognizer = Recognizer()
 
-    print("Speak now")
+    print("Watson:", assistant.message(""))
     for i in range(20):
         message = assistant.message(recognizer.listen())
-        print(message)
+        print("Watson:", message)
         tts.say(message)
