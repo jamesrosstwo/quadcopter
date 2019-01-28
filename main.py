@@ -2,7 +2,7 @@ import json
 from text_to_speech import Speech
 from speech_to_text import Recognizer
 from watson import Watson
-from server import Server
+import server
 import datetime
 
 
@@ -19,12 +19,8 @@ def init_services():
     tts = Speech()
     print("Initializing speech recognition...")
     recognizer = Recognizer()
-
-    # maybe just store this in memory?
-    with open('config.json') as f:
-        data = json.load(f)
-        print("Initializing web server...")
-        web_server = Server(data)
+    print("Initializing web server...")
+    server.start()
 
 
 def update_data():
@@ -32,9 +28,7 @@ def update_data():
     global next_update
     td = (next_update - datetime.datetime.now()).total_seconds() * 1000
     if td < 0:
-        print(1)
         next_update = datetime.datetime.now() + datetime.timedelta(milliseconds=delay_ms)
-
 
 
 if __name__ == "__main__":
