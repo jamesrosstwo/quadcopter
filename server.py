@@ -1,5 +1,3 @@
-import json
-
 from bottle import route, run, template
 
 

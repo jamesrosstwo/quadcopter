@@ -12,7 +12,7 @@ def load_config():
 
 
 def init_services():
-    global assistant, tts, recognizer, web_server
+    global assistant, tts, recognizer
     print("Initializing conversation...")
     assistant = Watson()
     print("Initializing voice...")
