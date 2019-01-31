@@ -2,7 +2,6 @@ import json
 from text_to_speech import Speech
 from speech_to_text import Recognizer
 from watson import Watson
-import server
 import datetime
 
 
@@ -20,7 +19,6 @@ def init_services():
     print("Initializing speech recognition...")
     recognizer = Recognizer()
     print("Initializing web server...")
-    server.start()
 
 
 def update_data():
