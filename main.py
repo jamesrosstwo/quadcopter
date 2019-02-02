@@ -4,7 +4,6 @@ from data import *
 import RPi.GPIO as GPIO
 
 
-
 def load_config():
     with open('config.json') as f:
         return json.load(f)
@@ -19,4 +18,3 @@ if __name__ == "__main__":
     _thread.start_new_thread(server.check(), ())
     while True:
         data.update()
-

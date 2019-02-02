@@ -1,6 +1,7 @@
 from socket import *
 from data import *
 
+
 class Server:
     def __init__(self):
         self.open = True
