@@ -7,9 +7,10 @@ class PingSensor:
     def __init__(self, trig, echo):
         self.trig = trig
         self.echo = echo
+        print(trig, echo, type(trig), type(echo))
         GPIO.setup(trig, GPIO.OUT)
         GPIO.setup(echo, GPIO.IN)
-        self.dist_size = 30
+        self.dist_size = 7
         r = self.read(first_reading=True)
         self.dists = [r / self.dist_size] * self.dist_size
         self.distance = r

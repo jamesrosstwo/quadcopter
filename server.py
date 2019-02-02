@@ -1,30 +1,35 @@
 from socket import *
 from data import *
+import sys
 
 
 class Server:
     def __init__(self):
         self.open = True
         self.HOST = '0.0.0.0'
-        self.PORT = 50000
+        self.PORT = int(sys.argv[1])
         self.BUFFER_SIZE = 1024
         self.ADDRESS = (self.HOST, self.PORT)
         self.server = socket(AF_INET, SOCK_STREAM)
         self.server.bind(self.ADDRESS)
         self.server.listen(2)
 
-    def check(self):
+    def check(self, d):
         while True:
             print("waiting on connection")
             client, address = self.server.accept()
             print('connected from:', address)
             while 1:
                 client_response = client.recv(1024).decode()
+                print(client_response)
                 if not client_response:
                     break
                 if client_response == "readings":
-                    client_response = get_readings()
+                    print("kachow")
+                    client_response = d.update()
+                    print(client_response)
                 client.send(client_response.encode())
+            print("closed")
             client.close()
 
     def close(self):
