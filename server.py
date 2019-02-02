@@ -1,5 +1,5 @@
 from socket import *
-from data import *
+import data
 import sys
 
 
@@ -26,9 +26,10 @@ class Server:
                     break
                 if client_response == "readings":
                     print("kachow")
-                    client_response = d.update()
+                    client_response = data.get_readings()
                     print(client_response)
                 client.send(client_response.encode())
+                time.sleep(0.1)
             print("closed")
             client.close()
 
