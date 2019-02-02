@@ -1,8 +1,6 @@
-import json
-from text_to_speech import Speech
-from speech_to_text import Recognizer
-from watson import Watson
-import datetime
+import _thread
+from server import *
+from data import *
 
 
 def load_config():
@@ -10,35 +8,10 @@ def load_config():
         return json.load(f)
 
 
-def init_services():
-    global assistant, tts, recognizer
-    print("Initializing conversation...")
-    assistant = Watson()
-    print("Initializing voice...")
-    tts = Speech()
-    print("Initializing speech recognition...")
-    recognizer = Recognizer()
-    print("Initializing web server...")
-
-
-def update_data():
-    delay_ms = 500
-    global next_update
-    td = (next_update - datetime.datetime.now()).total_seconds() * 1000
-    if td < 0:
-        next_update = datetime.datetime.now() + datetime.timedelta(milliseconds=delay_ms)
-
-
 if __name__ == "__main__":
-    next_update = datetime.datetime.min
     config = load_config()
-    init_services()
-
-    print("Watson:", assistant.message(""))
+    server = Server()
+    data = Data()
+    _thread.start_new_thread(server.check(), ())
     while True:
-        update_data()
-
-    # if buttonPressed:
-    # message = assistant.message(recognizer.listen())
-    # print("Watson:", message)
-    # tts.say(message)
+        data.update()

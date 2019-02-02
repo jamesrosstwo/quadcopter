@@ -1,19 +1,9 @@
-import json
 from socket import *
-
+from data import *
 
 class Server:
-    def get_readings(self):
-        with open('readings.json') as f:
-            return f.read()
-
-    def update_readings(self, r):
-        with open('readings.json', "w+") as f:
-            f.write(json.dumps(r))
-            f.write(chr(3))
-            f.close()
-
     def __init__(self):
+        self.open = True
         self.HOST = 'localhost'
         self.PORT = 50000
         self.BUFFER_SIZE = 1024
@@ -22,25 +12,28 @@ class Server:
         self.server.bind(self.ADDRESS)
         self.server.listen(2)
 
-    def start(self):
+    def check(self):
         while True:
             print("waiting on connection")
             client, address = self.server.accept()
             print('connected from:', address)
             while 1:
-                data = client.recv(1024).decode()
-                if not data:
+                client_response = client.recv(1024).decode()
+                if not client_response:
                     break
-                if data == "readings":
-                    data = self.get_readings()
-                client.send(data.encode())
+                if client_response == "readings":
+                    client_response = get_readings()
+                client.send(client_response.encode())
             client.close()
 
-        server.close()
+    def close(self):
+        self.open = False
+        self.server.close()
 
 
 if __name__ == "__main__":
     s = Server()
-    readings = {"status": "on"}
-    s.update_readings(readings)
-    s.start()
+    d = Data()
+    readings = d.get_json()
+    s.check()
+    s.close()
