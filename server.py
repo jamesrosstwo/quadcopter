@@ -4,7 +4,7 @@ from data import *
 class Server:
     def __init__(self):
         self.open = True
-        self.HOST = 'localhost'
+        self.HOST = '0.0.0.0'
         self.PORT = 50000
         self.BUFFER_SIZE = 1024
         self.ADDRESS = (self.HOST, self.PORT)

@@ -1,5 +1,7 @@
 import datetime
 import json
+import sensors
+
 
 
 def get_readings():
@@ -11,7 +13,7 @@ class Data:
 
     def __init__(self):
         self.status = "on"
-        self.altitude = 0
+        self.altitude = sensors.ping.read()
 
 
     def update(self):
@@ -20,6 +22,9 @@ class Data:
         td = (next_update - datetime.datetime.now()).total_seconds() * 1000
         if td < 0:
             next_update = datetime.datetime.now() + datetime.timedelta(milliseconds=delay_ms)
+	    self.altitude = sensors.ping.read()
+	    self.write_to("readings.json")
+
 
     def get_json(self):
         return json.dumps(self, default=lambda o: o.__dict__)
