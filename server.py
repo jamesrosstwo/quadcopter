@@ -1,6 +1,7 @@
 from socket import *
 import data
 import sys
+import time
 
 
 class Server:
@@ -19,19 +20,18 @@ class Server:
             print("waiting on connection")
             client, address = self.server.accept()
             print('connected from:', address)
-            while 1:
+            while True:
                 client_response = client.recv(1024).decode()
-                print(client_response)
                 if not client_response:
                     break
                 if client_response == "readings":
-                    print("kachow")
+                    d.update()
                     client_response = data.get_readings()
-                    print(client_response)
+
                 client.send(client_response.encode())
                 time.sleep(0.1)
-            print("closed")
             client.close()
+            self.close()
 
     def close(self):
         self.open = False
