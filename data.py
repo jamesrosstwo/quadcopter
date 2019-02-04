@@ -14,9 +14,11 @@ class Data:
     def __init__(self):
         self.status = "on"
         self.altitude = sensors.ping.read()
+        self.rotation = {"x": 0, "y": 0, "z": 0}
 
     def update(self):
         self.altitude = sensors.ping.read()
+        self.rotation = sensors.gyroscope.read()
         self.write_to("readings.json")
         return self.get_json()
 
