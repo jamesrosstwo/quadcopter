@@ -3,13 +3,13 @@ import time
 
 
 class Gyroscope:
-    def __init__(pin):
-        self.hmc = hmc5883l(pin)
+    def __init__(self):
+        self.hmc = hmc5883l(1)
         self.hmc.setContinuousMode()
         self.setDeclination(-10.51, 0)
         self.rotation = {}
 
-    def read():
+    def read(self):
         axes = self.hmc.getAxes()
         self.rotation = {"x": axes[0], "y": axes[1], "z": axes[2]}
         return self.rotation

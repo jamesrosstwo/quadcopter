@@ -3,6 +3,7 @@ import data
 import sys
 import time
 
+import hmc5883l
 
 class Server:
     def __init__(self):

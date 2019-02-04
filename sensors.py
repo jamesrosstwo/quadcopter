@@ -4,4 +4,4 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 ping = PingSensor(5, 6)
-gyroscope = Gyroscope(1)
+gyroscope = Gyroscope()
