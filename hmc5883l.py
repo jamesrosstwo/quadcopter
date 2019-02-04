@@ -25,7 +25,6 @@ class hmc5883l:
 	
 	def __init__(self, port, addr=0x1e, gauss=1.3):
 		self.bus = i2c.i2c(port, addr)
-		
 		self.setScale(gauss)
 		
 	def __str__(self):
