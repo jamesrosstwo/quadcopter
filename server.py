@@ -25,12 +25,11 @@ class Server:
                     break
                 if client_response == "readings":
                     d.update()
-                    client_response = data.get_readings()
-                    print(client_response)
                 else:
                     commands = client_response.split(";;")
                     for i in commands:
                         eval(i)
+                client_response = data.get_readings()
                 client.send(client_response.encode())
                 time.sleep(0.06)
             client.close()
