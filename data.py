@@ -15,12 +15,13 @@ class Data:
         self.status = "on"
         self.altitude = sensors.ping.read()
         self.rotation_x = 0
-        self.rotation_y = 0
-        self.rotation_z = 0
+        # self.rotation_y = 0
+        # self.rotation_z = 0
 
     def update(self):
         self.altitude = sensors.ping.read()
-        self.rotation_x, self.rotation_y, self.rotation_z = sensors.gyroscope.read()
+        # self.rotation_x, self.rotation_y, self.rotation_z = sensors.gyroscope.read()
+        self.rotation_x = sensors.gyroscope.read()[0]
         self.write_to("readings.json")
         return self.get_json()
 
