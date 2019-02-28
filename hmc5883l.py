@@ -148,7 +148,7 @@ class hmc5883l:
 		else:
 			magno_z = round(magno_z * self.scale, 4)
 			
-		return (magno_x, magno_y, magno_z)
+		return (magno_x % 360, magno_y % 360, magno_z % 360)
 		
 	
 		
