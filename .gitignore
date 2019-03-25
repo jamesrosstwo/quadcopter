@@ -1,5 +1,6 @@
 /venv
 /.idea
+/arduino/.idea
 /__pycache__
 /readings.json
 *.pyc
