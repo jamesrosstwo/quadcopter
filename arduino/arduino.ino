@@ -57,7 +57,7 @@ Servo ESCs[4];
 // Invensense Inc., www.invensense.com
 // See also MPU-6050 Register Map and Descriptions, Revision 4.0, RM-MPU-6050A-00, 9/12/2012 for registers not listed in 
 // above document; the MPU6050 and MPU-9150 are virtually identical but the latter has an on-board magnetic sensor
-//
+//..
 #define XGOFFS_TC        0x00 // Bit 7 PWR_MODE, bits 6:1 XG_OFFS_TC, bit 0 OTP_BNK_VLD                 
 #define YGOFFS_TC        0x01                                                                          
 #define ZGOFFS_TC        0x02
@@ -263,43 +263,6 @@ void testMotors(){
   }
 }
 
-void set_gyro_registers(){
-  //Setup the MPU-6050
-//  if(eeprom_data[31] == 1){
-//    Wire.beginTransmission(gyro_address);                                      //Start communication with the address found during search.
-//    Wire.write(0x6B);                                                          //We want to write to the PWR_MGMT_1 register (6B hex)
-//    Wire.write(0x00);                                                          //Set the register bits as 00000000 to activate the gyro
-//    Wire.endTransmission();                                                    //End the transmission with the gyro.
-//
-//    Wire.beginTransmission(gyro_address);                                      //Start communication with the address found during search.
-//    Wire.write(0x1B);                                                          //We want to write to the GYRO_CONFIG register (1B hex)
-//    Wire.write(0x08);                                                          //Set the register bits as 00001000 (500dps full scale)
-//    Wire.endTransmission();                                                    //End the transmission with the gyro
-//
-//    Wire.beginTransmission(gyro_address);                                      //Start communication with the address found during search.
-//    Wire.write(0x1C);                                                          //We want to write to the ACCEL_CONFIG register (1A hex)
-//    Wire.write(0x10);                                                          //Set the register bits as 00010000 (+/- 8g full scale range)
-//    Wire.endTransmission();                                                    //End the transmission with the gyro
-//
-//    //Let's perform a random register check to see if the values are written correct
-//    Wire.beginTransmission(gyro_address);                                      //Start communication with the address found during search
-//    Wire.write(0x1B);                                                          //Start reading @ register 0x1B
-//    Wire.endTransmission();                                                    //End the transmission
-//    Wire.requestFrom(gyro_address, 1);                                         //Request 1 bytes from the gyro
-//    while(Wire.available() < 1);                                               //Wait until the 6 bytes are received
-//    if(Wire.read() != 0x08){                                                   //Check if the value is 0x08
-//      digitalWrite(12,HIGH);                                                   //Turn on the warning led
-//      while(1)delay(10);                                                       //Stay in this loop for ever
-//    }
-//
-//    Wire.beginTransmission(gyro_address);                                      //Start communication with the address found during search
-//    Wire.write(0x1A);                                                          //We want to write to the CONFIG register (1A hex)
-//    Wire.write(0x03);                                                          //Set the register bits as 00000011 (Set Digital Low Pass Filter to ~43Hz)
-//    Wire.endTransmission();                                                    //End the transmission with the gyro
-//
-//  }
-}
-
 void gyro_signalen(){
 
   if(readByte(MPU6050_ADDRESS, INT_STATUS) & 0x01) {  // check if data ready interrupt
@@ -351,24 +314,6 @@ void set_digital_ports(){
     delayMicroseconds(3000);                                                //Wait 3000us.
   }
 }
-
-//void wait_for_valid_receiver(){
-//  //Wait until the receiver is active and the throtle is set to the lower position.
-//  while(rc_values[THROTTLE_CH] < 990 || rc_values[THROTTLE_CH] > 1020 || rc_values[YAW_CH] < 1400){
-//    rc_read_values();
-//    start ++;                                                               //While waiting increment start whith every loop.
-//    //We don't want the esc's to be beeping annoyingly. So let's give them a 1000us puls while waiting for the receiver inputs.
-//    PORTD |= B11110000;                                                     //Set digital poort 4, 5, 6 and 7 high.
-//    delayMicroseconds(1000);                                                //Wait 1000us.
-//    PORTD &= B00001111;                                                     //Set digital poort 4, 5, 6 and 7 low.
-//    delay(3);                                                               //Wait 3 milliseconds before the next loop.
-//    if(start == 125){                                                       //Every 125 loops (500ms).
-//      digitalWrite(12, !digitalRead(12));                                   //Change the led status.
-//      start = 0;                                                            //Start again at 0.
-//    }
-//  }
-//  start = 0;                                                                //Set start back to 0.
-//}
 
 void get_battery_voltage(){
   //Load the battery voltage to the battery_voltage variable.
@@ -450,30 +395,6 @@ void calculate_accelerometer_angles(){
     roll_level_adjust = 0;                                                  //Set the roll angle correcion to zero.
   }
 }
-
-void manage_special_controls(){
-  //For starting the motors: throttle low and yaw left (step 1).
-//  if(rc_values[THROTTLE_CH] < 1050 && rc_values[YAW_CH] < 1050)start = 1;
-  //When yaw stick is back in the center position start the motors (step 2).
-//  if(start == 1 && rc_values[THROTTLE_CH] < 1050 && rc_values[YAW_CH] > 1450){
-//    start = 2;
-//
-//    angle_pitch = angle_pitch_acc;                                          //Set the gyro pitch angle equal to the accelerometer pitch angle when the quadcopter is started.
-//    angle_roll = angle_roll_acc;                                            //Set the gyro roll angle equal to the accelerometer roll angle when the quadcopter is started.
-//    gyro_angles_set = true;                                                 //Set the IMU started flag.
-//
-//    //Reset the PID controllers for a bumpless start.
-//    pid_i_mem_roll = 0;
-//    pid_last_roll_d_error = 0;
-//    pid_i_mem_pitch = 0;
-//    pid_last_pitch_d_error = 0;
-//    pid_i_mem_yaw = 0;
-//    pid_last_yaw_d_error = 0;
-//  }
-//  //Stopping the motors: throttle low and yaw right.
-//  if(start == 2 && rc_values[THROTTLE_CH] < 1050 && rc_values[YAW_CH] > 1950)start = 0;
-}
-
 void calculate_pid_inputs(){
   //The PID set point in degrees per second is determined by the roll receiver input.
   //In the case of deviding by 3 the max roll rate is aprox 164 degrees per second ( (500-8)/3 = 164d/s ).
@@ -575,14 +496,6 @@ void calculate_esc_pulses(){
   if(esc_2 > 2000)esc_2 = 2000;                                           //Limit the esc-2 pulse to 2000us.
   if(esc_3 > 2000)esc_3 = 2000;                                           //Limit the esc-3 pulse to 2000us.
   if(esc_4 > 2000)esc_4 = 2000;                                           //Limit the esc-4 pulse to 2000us.
-//  }
-//  else{
-//    esc_1 = 1000;                                                           //If start is not 2 keep a 1000us pulse for ess-1.
-//    esc_2 = 1000;                                                           //If start is not 2 keep a 1000us pulse for ess-2.
-//    esc_3 = 1000;                                                           //If start is not 2 keep a 1000us pulse for ess-3.
-//    esc_4 = 1000;                                                           //If start is not 2 keep a 1000us pulse for ess-4.
-//    Serial.println("set to zero");
-//  }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
   //Creating the pulses for the ESC's is explained in this video:
@@ -780,14 +693,6 @@ void calibrateMPU6050(float * dest1, float * dest2)
   data[4] = (-gyro_bias[2]/4  >> 8) & 0xFF;
   data[5] = (-gyro_bias[2]/4)       & 0xFF;
 
-// Push gyro biases to hardware registers; works well for gyro but not for accelerometer
-//  writeByte(MPU6050_ADDRESS, XG_OFFS_USRH, data[0]); 
-//  writeByte(MPU6050_ADDRESS, XG_OFFS_USRL, data[1]);
-//  writeByte(MPU6050_ADDRESS, YG_OFFS_USRH, data[2]);
-//  writeByte(MPU6050_ADDRESS, YG_OFFS_USRL, data[3]);
-//  writeByte(MPU6050_ADDRESS, ZG_OFFS_USRH, data[4]);
-//  writeByte(MPU6050_ADDRESS, ZG_OFFS_USRL, data[5]);
-
   dest1[0] = (float) gyro_bias[0]/(float) gyrosensitivity; // construct gyro bias in deg/s for later manual subtraction
   dest1[1] = (float) gyro_bias[1]/(float) gyrosensitivity;
   dest1[2] = (float) gyro_bias[2]/(float) gyrosensitivity;
@@ -827,15 +732,6 @@ void calibrateMPU6050(float * dest1, float * dest2)
   data[4] = (accel_bias_reg[2] >> 8) & 0xFF;
   data[5] = (accel_bias_reg[2])      & 0xFF;
   data[5] = data[5] | mask_bit[2]; // preserve temperature compensation bit when writing back to accelerometer bias registers
-
-  // Push accelerometer biases to hardware registers; doesn't work well for accelerometer
-  // Are we handling the temperature compensation bit correctly?
-//  writeByte(MPU6050_ADDRESS, XA_OFFSET_H, data[0]);  
-//  writeByte(MPU6050_ADDRESS, XA_OFFSET_L_TC, data[1]);
-//  writeByte(MPU6050_ADDRESS, YA_OFFSET_H, data[2]);
-//  writeByte(MPU6050_ADDRESS, YA_OFFSET_L_TC, data[3]);  
-//  writeByte(MPU6050_ADDRESS, ZA_OFFSET_H, data[4]);
-//  writeByte(MPU6050_ADDRESS, ZA_OFFSET_L_TC, data[5]);
 
 // Output scaled accelerometer biases for manual subtraction in the main program
    dest2[0] = (float)accel_bias[0]/(float)accelsensitivity; 
@@ -887,12 +783,6 @@ void MPU6050SelfTest(float * destination) // Should return percent deviation fro
    factoryTrim[3] =  ( 25.0*131.0)*(pow( 1.046 , ((float)selfTest[3] - 1.0) ));             // FT[Xg] factory trim calculation
    factoryTrim[4] =  (-25.0*131.0)*(pow( 1.046 , ((float)selfTest[4] - 1.0) ));             // FT[Yg] factory trim calculation
    factoryTrim[5] =  ( 25.0*131.0)*(pow( 1.046 , ((float)selfTest[5] - 1.0) ));             // FT[Zg] factory trim calculation
-   
- //  Output self-test results and factory trim calculation if desired
- //  Serial.println(selfTest[0]); Serial.println(selfTest[1]); Serial.println(selfTest[2]);
- //  Serial.println(selfTest[3]); Serial.println(selfTest[4]); Serial.println(selfTest[5]);
- //  Serial.println(factoryTrim[0]); Serial.println(factoryTrim[1]); Serial.println(factoryTrim[2]);
- //  Serial.println(factoryTrim[3]); Serial.println(factoryTrim[4]); Serial.println(factoryTrim[5]);
 
  // Report results as a ratio of (STR - FT)/FT; the change from Factory Trim of the Self-Test Response
  // To get to percent, must multiply by 100 and subtract result from 100
@@ -999,9 +889,7 @@ void loop() {
   //the Q&A page:
   //! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !  
   //Set the timer for the next loop.
-
-//  calculate_pulse_falling_edge();
-
+  
   //There is always 1000us of spare time. So let's do something usefull that is very time consuming.
   //Get the current gyro and receiver data and scale it to degrees per second for the pid calculations.
   gyro_signalen();
