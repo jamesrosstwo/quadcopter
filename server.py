@@ -1,10 +1,12 @@
 from socket import *
+from arduino_interface import *
 import data
 import sys
 import time
 
 class Server:
     def __init__(self):
+        self.arduino_interface = ArduinoInterface()
         self.open = True
         self.HOST = '0.0.0.0'
         self.PORT = int(sys.argv[1])
@@ -23,15 +25,11 @@ class Server:
                 client_response = client.recv(1024).decode()
                 if not client_response:
                     break
-                if client_response == "readings":
-                    d.update()
-                else:
-                    commands = client_response.split(";;")
-                    for i in commands:
-                        eval(i)
+                self.arduino_interface.send_info(d)
+                d.axes = client_response.split()
                 client_response = data.get_readings()
                 client.send(client_response.encode())
-                time.sleep(0.06)
+                time.sleep(0.2)
             client.close()
             self.close()
 

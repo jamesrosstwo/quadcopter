@@ -10,7 +10,11 @@ def load_config():
 
 
 if __name__ == "__main__":
+    print("config loading")
     config = load_config()
+    print("config")
     server = Server()
+    print("server up")
     data = Data()
+    print("data up")
     server.check(data)
