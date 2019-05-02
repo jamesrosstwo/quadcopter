@@ -15,6 +15,7 @@ class Server:
         self.server = socket(AF_INET, SOCK_STREAM)
         self.server.bind(self.ADDRESS)
         self.server.listen(2)
+        self.axes = []
 
     def check(self, d):
         while True:
@@ -22,14 +23,16 @@ class Server:
             client, address = self.server.accept()
             print('connected from:', address)
             while True:
+                d.update()
                 client_response = client.recv(1024).decode()
                 if not client_response:
                     break
-                self.arduino_interface.send_info(d)
-                d.axes = client_response.split()
+                self.arduino_interface.send_info(self.axes)
+                self.axes = client_response.split()
                 client_response = data.get_readings()
                 client.send(client_response.encode())
-                time.sleep(0.2)
+                self.arduino_interface.recv_info()
+                #time.sleep(0.2)
             client.close()
             self.close()
 
