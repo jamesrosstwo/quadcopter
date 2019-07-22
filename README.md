@@ -1,4 +1,4 @@
-# vr_quadcopter
+# pi_quadcopter
 
 ## Installation
 * Add the Watson API key and URL as environment variables with the names "ASSISTANT_APIKEY" and "ASSISTANT_URL" respectively.
