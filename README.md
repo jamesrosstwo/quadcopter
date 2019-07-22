@@ -15,8 +15,8 @@ Arduino and python code to fly the RPi quadcopter through the [desktop app](http
 
 ## Usage
 
-* 
-    ```bash
-    python main.py
-    ```
+
+```bash
+python main.py
+```
 
