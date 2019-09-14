@@ -1,5 +1,5 @@
-# pi_quadcopter
-Arduino and python code to fly the RPi quadcopter through the [desktop app](https://github.com/jamesrosstwo/pi_quadcopter_desktop/)
+# quadcopter
+Arduino and python code to fly the RPi quadcopter through the [desktop app](https://github.com/jamesrosstwo/quadcopter_desktop_app
 
 
 ## Installation
